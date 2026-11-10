@@ -1,0 +1,20 @@
+name: Test real cross-browser cloud synchronization
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-two-browsers.yml'
+      - 'tests/verify-two-browsers.cjs'
+  workflow_dispatch:
+jobs:
+  real-browser-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.58.2
+      - run: npx playwright install --with-deps chromium
+      - name: Validate two isolated browser profiles using an isolated test database
+        run: node tests/verify-two-browsers.cjs
