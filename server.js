@@ -22,7 +22,7 @@ async function init(){
 }
 function valid(s){return s&&Array.isArray(s.categories)&&s.categories.length>0&&s.categories.length<=100&&Array.isArray(s.items)&&s.items.length<=2000&&s.items.every(i=>i&&typeof i.id==='string'&&typeof i.title==='string'&&typeof i.categoryId==='string'&&typeof i.body==='string')}
 app.get('/health',(req,res)=>res.json({ok:true,storageConfigured:!!pool}));
-app.use('/api/sync',(req,res,next)=>{
+app.put('/api/sync',(req,res,next)=>{
  if(!process.env.SYNC_SECRET||!crypto.timingSafeEqual(Buffer.from(crypto.createHash('sha256').update(req.get('X-Sync-Key')||'').digest()),Buffer.from(crypto.createHash('sha256').update(process.env.SYNC_SECRET).digest())))return res.status(401).json({error:'인증 코드가 올바르지 않습니다'});
  next();
 });
