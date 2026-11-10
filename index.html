@@ -163,8 +163,8 @@ const CLOUD_PENDING_KEY='billy-cloud-pending-v1';
 const cloudHadLocal=!!localStorage.getItem(KEY)&&JSON.stringify(state)!==JSON.stringify(DEFAULT);
 let cloudRev=localStorage.getItem(CLOUD_REV_KEY)||null;
 let cloudReady=false,cloudDirty=localStorage.getItem(CLOUD_PENDING_KEY)==='1',cloudSaving=false,cloudApplying=false,cloudHasRemote=false,cloudTimer=null;
-let cloudKey=sessionStorage.getItem('billy-cloud-key')||localStorage.getItem('billy-cloud-key')||'';
-let cloudBadge,cloudSetupBtn,cloudPullBtn,cloudPushBtn;
+// No edit password required. Anyone with the website URL can change shared content.
+let cloudBadge,cloudPullBtn,cloudPushBtn;
 function cloudStatus(message){if(cloudBadge)cloudBadge.textContent=message}
 function cloudButtons(){
  const host=document.querySelector('.top-actions')||document.querySelector('.header-upper')||document.body;
@@ -178,21 +178,10 @@ function cloudButtons(){
    b.type='button';b.className='btn btn-sm';b.textContent=name;b.addEventListener('click',handle);
    wrap.append(b);return b
  };
- cloudSetupBtn=button('🔐 편집 암호',cloudAuth);
+ 
  cloudPullBtn=button('↓ 서버 내용 불러오기',()=>cloudPull(true));
  cloudPushBtn=button('↑ 이 PC 내용 올리기',()=>cloudPush(true));
  wrap.append(cloudBadge);host.append(wrap);
-}
-function cloudAuth(){
- const next=prompt('다른 PC와 동기화할 편집 암호를 입력하세요. 주소를 공유해도 이 암호는 별도로 알려주셔야 수정 가능합니다.',cloudKey||'');
- if(next===null)return;
- if(!next.trim()){cloudKey='';sessionStorage.removeItem('billy-cloud-key');localStorage.removeItem('billy-cloud-key');cloudStatus('🔒 편집 암호가 지워졌습니다');return}
- cloudKey=next.trim();
- if(confirm('이 브라우저에 편집 암호를 기억할까요? 공용 PC에서는 취소를 선택하세요.')){
-  localStorage.setItem('billy-cloud-key',cloudKey);sessionStorage.removeItem('billy-cloud-key');
- }else{sessionStorage.setItem('billy-cloud-key',cloudKey);localStorage.removeItem('billy-cloud-key')}
- cloudStatus('🔑 암호 등록됨 · 저장 시 클라우드에 동기화');
- if(cloudDirty)cloudPush(false);
 }
 function cloudApply(data,revision){
  if(!isValid(data))return false;
@@ -231,7 +220,7 @@ async function cloudPull(force=false){
    cloudStatus('☁ 연결됨 · 다른 PC 수정도 자동 반영');
   }else{
    cloudRev=null;
-   cloudStatus('☁ 첫 업로드 필요 · 편집 암호 등록 후 ↑ 이 PC 내용 올리기');
+   cloudStatus('☁ 첫 업로드 필요 · ↑ 이 PC 내용 올리기');
   }
  }catch(err){cloudStatus('⚠ 클라우드 접속 실패 · 이 PC에는 계속 저장됨')}
 }
@@ -242,16 +231,16 @@ function cloudSchedule(){
 async function cloudPush(explicit=false){
  if(cloudSaving)return;
  if(!cloudReady){cloudStatus('☁ 서버 연결 확인 중');return}
- if(!cloudKey){cloudStatus('🔒 이 PC 저장 완료 · 동기화하려면 편집 암호 입력');if(explicit)cloudAuth();return}
+ 
  if(!cloudDirty&&!explicit)return;
  if(explicit&&cloudHasRemote&&!confirm('이 PC의 현재 상담 문구와 카테고리로 서버 내용을 갱신하시겠습니까? 다른 PC에도 반영됩니다.'))return;
  cloudSaving=true;cloudStatus('☁ 클라우드에 저장하는 중…');
  const snapshot=JSON.stringify(state),rev=cloudRev;
  try{
-  const response=await fetch(CLOUD_API,{method:'PUT',headers:{'Content-Type':'application/json','X-Sync-Key':cloudKey},body:JSON.stringify({state:JSON.parse(snapshot),revision:rev})});
+  const response=await fetch(CLOUD_API,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({state:JSON.parse(snapshot),revision:rev})});
   const payload=await response.json().catch(()=>({}));
   if(response.status===409){cloudStatus('⚠ 다른 PC 수정과 충돌 · 이 PC 백업 후 서버 내용 불러오기');return}
-  if(response.status===401){cloudStatus('🔐 편집 암호 오류 · 암호 다시 입력');return}
+  
   if(!response.ok)throw Error(payload.error||'저장 실패');
   cloudRev=payload.revision;cloudHasRemote=true;
   localStorage.setItem(CLOUD_REV_KEY,cloudRev);
