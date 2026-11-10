@@ -41,6 +41,9 @@ jobs:
           assert status==200,f'GET sync HTTP {status}: {data[:300]}'
           obj=json.loads(data)
           assert 'revision' in obj, 'revision missing'
+          print('CLOUD_STATE:', 'initialized' if obj.get('state') is not None else 'empty')
+          if obj.get('state') is not None:
+              print('CLOUD_COUNTS:', len(obj['state'].get('categories',[])), len(obj['state'].get('items',[])))
           if obj.get('state') is not None:
               assert isinstance(obj['state'].get('categories'),list) and isinstance(obj['state'].get('items'),list)
           status,bad,_=request(api+'/api/sync',method='PUT',body=b'{}')
