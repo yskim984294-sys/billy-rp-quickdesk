@@ -1,0 +1,53 @@
+name: Verify live Billy sync without changing customer data
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-live.yml'
+  workflow_dispatch:
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Test public website and read-only API and reject invalid writes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error, time
+          base='https://billy-rp-quickdesk.onrender.com/'
+          api='https://billy-rp-sync-api-j26u.onrender.com'
+          def request(url,method='GET',body=None):
+              headers={'User-Agent':'Billy-Sync-Smoke-Test/1.0'}
+              if body is not None: headers['Content-Type']='application/json'
+              req=urllib.request.Request(url,data=body,headers=headers,method=method)
+              try:
+                  with urllib.request.urlopen(req,timeout=75) as r:return r.status,r.read().decode('utf-8'),dict(r.headers)
+              except urllib.error.HTTPError as e:return e.code,e.read().decode('utf-8'),dict(e.headers)
+          for i in range(3):
+              try:
+                  status,health,_=request(api+'/health')
+                  if status!=200:raise RuntimeError(f'health HTTP {status}: {health[:200]}')
+                  assert json.loads(health)['storageConfigured']==True,health
+                  break
+              except Exception:
+                  if i==2:raise
+                  time.sleep(10)
+          status,html,_=request(base)
+          assert status==200,f'website status {status}'
+          assert 'cloudStart();' in html and 'cloudPush(' in html and 'cloudPull(' in html,'sync client missing'
+          assert "편집 암호를 입력하세요" not in html,'password prompt still present'
+          status,data,headers=request(api+'/api/sync')
+          assert status==200,f'GET sync HTTP {status}: {data[:300]}'
+          obj=json.loads(data)
+          assert 'revision' in obj, 'revision missing'
+          if obj.get('state') is not None:
+              assert isinstance(obj['state'].get('categories'),list) and isinstance(obj['state'].get('items'),list)
+          status,bad,_=request(api+'/api/sync',method='PUT',body=b'{}')
+          assert status==400,f'invalid write should reject with 400, got {status}, {bad[:200]}'
+          originheaders={'Origin':base.rstrip('/')}
+          req=urllib.request.Request(api+'/api/sync',headers=originheaders,method='OPTIONS')
+          with urllib.request.urlopen(req,timeout=75) as r:
+              assert r.status==204 and r.headers.get('Access-Control-Allow-Origin')==base.rstrip('/'),dict(r.headers)
+          print('PASS website GET 200; sync code loaded; password removed; API health 200; database GET 200; invalid PUT 400; cross-origin preflight 204; existing data untouched.')
+          PY
