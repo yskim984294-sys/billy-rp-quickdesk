@@ -37,4 +37,51 @@ app.put('/api/sync',async(req,res)=>{
  }catch(e){await client.query('ROLLBACK');throw e}finally{client.release()}
  }catch(e){console.error(e);res.status(503).json({error:'클라우드 저장을 완료하지 못했습니다'})}
 });
+
+/* Dedicated verification data, separate from real counseling content. */
+let verificationInitialized=false;
+async function initVerification(){
+ await init();
+ if(!verificationInitialized){
+  await pool.query('CREATE TABLE IF NOT EXISTS billy_sync_verification (id integer PRIMARY KEY CHECK (id=1), revision text NOT NULL, state jsonb NOT NULL, updated_at timestamptz NOT NULL DEFAULT now())');
+  verificationInitialized=true;
+ }
+}
+app.get('/api/verification-sync',async(req,res)=>{
+ try{
+  await initVerification();
+  const q=await pool.query('SELECT revision,state FROM billy_sync_verification WHERE id=1');
+  res.json(q.rows[0]||{revision:null,state:null});
+ }catch(e){console.error(e);res.status(503).json({error:'verification storage failure'})}
+});
+app.put('/api/verification-sync',async(req,res)=>{
+ const s=req.body?.state;
+ if(!valid(s))return res.status(400).json({error:'invalid verification data'});
+ try{
+  await initVerification();
+  const c=await pool.connect();
+  try{
+   await c.query('BEGIN');
+   await c.query('SELECT pg_advisory_xact_lock(93014012)');
+   const o=await c.query('SELECT revision FROM billy_sync_verification WHERE id=1');
+   const rev=o.rows[0]?.revision||null;
+   if(rev!==(req.body.revision||null)){
+    await c.query('ROLLBACK');
+    return res.status(409).json({error:'revision conflict'});
+   }
+   const next=crypto.randomUUID();
+   await c.query('INSERT INTO billy_sync_verification (id,revision,state) VALUES(1,$1,$2) ON CONFLICT(id) DO UPDATE SET revision=EXCLUDED.revision,state=EXCLUDED.state,updated_at=now()',[next,JSON.stringify(s)]);
+   await c.query('COMMIT');
+   res.json({revision:next});
+  }catch(e){await c.query('ROLLBACK');throw e}finally{c.release()}
+ }catch(e){console.error(e);res.status(503).json({error:'verification write failure'})}
+});
+app.delete('/api/verification-sync',async(req,res)=>{
+ try{
+  await initVerification();
+  const result=await pool.query('DELETE FROM billy_sync_verification WHERE id=1 AND revision=$1',[req.body?.revision||'']);
+  res.status(result.rowCount?200:409).json({deleted:!!result.rowCount});
+ }catch(e){console.error(e);res.status(503).json({error:'verification cleanup failure'})}
+});
+
 app.listen(process.env.PORT||10000,'0.0.0.0');
