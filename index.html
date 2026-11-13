@@ -109,13 +109,32 @@
 .attachment-status{display:inline-flex;align-items:center;gap:5px;color:#687db8;font-size:11px;font-weight:700}
 @media(max-width:1000px){.itemrow .row-move{padding:7px 6px;font-size:10px;margin-right:6px}.itemrow .quick-copy{padding:7px 6px}}
 @media(max-width:620px){.header-upper{gap:8px}.header-upper .brand{min-width:0;flex:1}.brand-sub{display:none}.top-actions{flex-shrink:0}.itemrow .row-steps{display:none}.row-move{padding:6px 6px}.itemrow .quick-copy{margin-left:0}.preview-actions .btn{font-size:11px;padding:7px 9px}.embedded-image img{max-height:320px}}
+
+/* Calm, responsive counseling desk — 2026-11 */
+:root{--bg:#f5f7fa;--ink:#26354a;--muted:#66758a;--line:#e1e7ef;--shadow:0 4px 20px #26354a05}
+.site-header{background:#fff;backdrop-filter:none;box-shadow:none}
+.header-upper{gap:16px;min-height:74px}.brand-sub{letter-spacing:.02em;color:#778397}
+.brand-icon{background:#6375df;box-shadow:none}.btn-primary{background:#586bd6;box-shadow:none}.btn-primary:hover{background:#495cc5}
+.top-actions{gap:7px}.top-actions .btn{font-weight:650}
+.header-lower{min-height:58px}.nav-button{padding:10px 16px}.nav-button.active{background:#edf0ff;border-color:#e1e6ff}
+.main{padding-top:24px}.hero{margin-bottom:20px}.hero h1{font-size:27px}.hero p{color:#69788c}.kicker{letter-spacing:.09em;color:#6b79aa}.hero-aside{display:flex;align-items:center;gap:10px;min-width:0;padding:10px 16px}.hero-aside strong{font-size:22px}.hero-aside small{color:#748197}
+.notice{background:transparent;border:0;padding:0;color:#718096;margin-bottom:12px}.notice summary{cursor:pointer;width:fit-content;font-size:12px}.notice .help-content{padding:12px 15px;margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:10px;line-height:1.9}
+.tools{gap:16px;margin:0 0 18px}.searchbox{height:48px;border-radius:12px}.searchbox input::placeholder{color:#7b899c}
+.workspace{grid-template-columns:minmax(340px,36%) minmax(0,1fr);gap:20px}.itemlist{gap:8px;max-height:calc(100dvh - 320px);min-height:350px}.preview{max-height:calc(100dvh - 320px);min-height:350px;border-radius:16px;box-shadow:none}
+.itemrow{min-height:78px;border-radius:12px;box-shadow:none}.rowtitle{font-size:14px;line-height:1.5;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.rowcontext{color:#7a879a;margin-top:5px}.itemrow.selected{background:#eef2ff;border-color:#aebbf1;box-shadow:inset 3px 0 #6275db}
+.preview-title{font-size:23px}.preview-context{color:#6f7f93}.preview-body{font-size:15px;line-height:1.95;color:#34445b;padding-top:24px}.preview-actions{border-bottom:1px solid #edf0f5;background:#fff}.preview-bottom{color:#728198}.row-step{width:25px;height:23px;line-height:20px}.quick-copy,.row-move{min-height:34px}.footnote{color:#748198;line-height:1.8}
+.sync-bar{border-bottom:1px solid var(--line);background:#f9fafc}.sync-inner{max-width:1680px;margin:auto;padding:8px clamp(20px,3.4vw,58px);display:flex;justify-content:space-between;align-items:center;gap:12px}.sync-status{font-size:12px;color:#56705f;overflow-wrap:anywhere}.sync-actions{display:flex;gap:8px;flex:none}.sync-actions .btn{padding:5px 10px;font-size:11px;background:transparent;color:#65738a}.sync-status[data-level="warning"]{color:#9b6529}
+.save-caption{display:none}.card:hover{transform:none}.card h3{color:#26354a}.situation,.source{color:#718096}
+@media(max-width:1050px){.workspace{grid-template-columns:minmax(300px,42%) minmax(0,1fr);gap:14px}.header-upper{flex-wrap:wrap}.preview-title{font-size:20px}.tools{flex-wrap:wrap}.toolbar-right{flex:1;justify-content:flex-end}.itemlist,.preview{max-height:calc(100dvh - 350px)}}
+@media(max-width:620px){.setting-row{align-items:flex-start;flex-direction:column}.setting-row>div{max-width:100%;flex-wrap:wrap}.site-header{position:relative}.header-upper{padding:16px;gap:13px}.header-upper .brand{flex-basis:100%}.brand-title{font-size:18px}.brand-sub{display:block;font-size:10px}.top-actions{width:100%;display:flex;gap:6px}.top-actions .text-button{display:inline-flex}.top-actions .btn{flex:1;min-height:38px;font-size:11px;padding:8px 6px}.header-lower{padding:0 12px}.nav-button{min-height:43px}.sync-inner{padding:10px 16px;align-items:flex-start;flex-direction:column;gap:6px}.sync-actions .btn{min-height:32px}.main{padding:22px 14px 32px}.hero h1{font-size:24px}.hero-aside{display:none}.hero p{font-size:12px}.tools{gap:10px}.searchbox{flex-basis:100%;height:46px}.toolbar-right{width:100%;gap:6px;justify-content:space-between}.result-label{font-size:11px}.toolbar-right>.btn{min-height:38px}.view-switch{padding:3px}.switch-btn{padding:7px 6px}.workspace{display:flex;gap:14px}.itemlist{max-height:290px;min-height:0;padding-right:2px}.itemrow{min-height:82px;gap:2px}.rowtitle{font-size:13px}.rowcontext{font-size:11px}.itemrow .row-steps{display:flex}.row-step{height:28px;min-width:26px}.itemrow .quick-copy,.itemrow .row-move{min-height:38px;font-size:11px;padding:6px}.preview{min-height:360px;max-height:75dvh}.preview-body{font-size:15px;line-height:1.85;padding:18px}.preview-title{font-size:20px;padding:0 18px}.preview-actions{padding:12px 18px;gap:7px}.preview-actions .btn{min-height:40px;font-size:12px}.modal-bg{padding:8px}.modal{max-height:calc(100dvh - 16px)}.field{font-size:16px}.modal-foot .btn{min-height:42px}.workspace.grid-mode .card .card-bottom{flex-wrap:wrap}.sync-status{font-size:11px}}
+
 </style>
 </head>
 <body>
 <div class="app">
   <header class="site-header">
     <div class="header-upper">
-      <div class="brand"><div class="brand-icon">✦</div><div><div class="brand-title">빌리 상담 가이드</div><div class="brand-sub">MY SCRIPT LIBRARY · 이미지 첨부 · 카테고리 이동</div></div></div>
+      <div class="brand"><div class="brand-icon">✦</div><div><div class="brand-title">빌리 상담 가이드</div><div class="brand-sub">상담에 집중하는 나만의 문구 노트</div></div></div>
       <div class="top-actions"><button class="btn btn-sm text-button" id="backupBtn">↓ 백업 저장</button><button class="btn btn-sm text-button" id="restoreBtn">↑ 백업 불러오기</button><button class="btn btn-sm" id="settingsBtn">⚙ 카테고리 관리</button></div>
     </div>
     <div class="header-lower">
@@ -125,7 +144,7 @@
   </header>
   <main class="main">
     <section class="hero"><div><div class="kicker">COUNSELING QUICK DESK</div><h1 id="pageTitle">전체 상담 문구</h1><p id="pageSubtitle">왼쪽에서 문구를 선택하고 오른쪽에서 바로 읽고 복사하세요.</p></div><div class="hero-aside"><strong id="totalCount">0</strong><small>전체 상담 문구</small></div></section>
-    <div class="notice">💡 왼쪽 문구의 <b>↪ 이동</b> 버튼을 눌러 다른 카테고리로 옮기세요. ⠿ 손잡이로도 순서를 바꾸거나 상단 카테고리로 끌어 이동할 수 있어요. <b>✎ 수정하기 → 🖼 이미지 첨부</b>로 글 중간에 사진을 넣을 수 있어요.</div>
+    <details class="notice"><summary>문구 이동 · 이미지 첨부 사용법</summary><div class="help-content">문구의 <b>↪ 이동</b> 버튼으로 카테고리를 변경할 수 있습니다. ⠿ 손잡이 또는 ▲▼ 버튼으로 순서를 바꾸세요.<br><b>수정하기 → 이미지 첨부</b>에서 사진을 넣을 수 있으며, 백업 저장·불러오기도 상단에서 이용할 수 있습니다.</div></details>
     <div class="tools">
       <div class="searchbox"><span aria-hidden="true">⌕</span><input id="search" placeholder="제목 · 상담 상황 · 본문 검색 (Ctrl+K)" aria-label="상담 문구 검색"><button id="clearSearch" title="검색어 지우기" aria-label="검색어 지우기" hidden>×</button></div>
       <div class="toolbar-right"><span id="resultCount" class="result-label">0개 문구</span><div class="view-switch" role="group" aria-label="표시 방식"><button id="viewSplit" type="button" class="switch-btn active" aria-pressed="true">▤ 나란히 보기</button><button id="viewGrid" type="button" class="switch-btn" aria-pressed="false">▦ 카드 모아보기</button></div><button class="btn btn-primary" id="addBtn">＋ 새 문구 추가</button></div>
@@ -134,7 +153,7 @@
       <div class="itemlist" id="itemlist" aria-label="문구 목록"></div>
       <div class="preview" id="preview" aria-label="선택한 상담 문구"></div>
     </section>
-    <p class="footnote">수정 문구와 첨부 이미지는 이 브라우저에만 저장됩니다. 사진 용량에 따라 저장 한도가 있으니 꼭 <b>백업 저장</b>을 이용하세요. 복사 버튼은 글자만 복사하며 이미지는 별도로 복사하거나 저장할 수 있습니다.</p>
+    <p class="footnote">상단에 <b>저장 완료</b>가 표시되면 같은 주소를 여는 다른 PC와 모바일에서도 확인할 수 있습니다. 연결이 끊기면 이 기기에 보관하고 다시 연결될 때 재시도합니다.<br>글자와 이미지는 각각 복사할 수 있습니다. 중요한 내용은 상단의 백업 저장으로도 보관해 주세요.</p>
   </main>
 </div>
 <div id="modalRoot"></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -165,45 +184,43 @@ let cloudRev=localStorage.getItem(CLOUD_REV_KEY)||null;
 let cloudReady=false,cloudDirty=localStorage.getItem(CLOUD_PENDING_KEY)==='1',cloudSaving=false,cloudApplying=false,cloudHasRemote=false,cloudTimer=null;
 // No edit password required. Anyone with the website URL can change shared content.
 let cloudBadge,cloudPullBtn,cloudPushBtn;
-function cloudStatus(message){if(cloudBadge)cloudBadge.textContent=message}
+let cloudPulling=false,cloudConflict=false;
+function cloudStatus(message){if(cloudBadge){cloudBadge.textContent=message;cloudBadge.dataset.level=message.includes('⚠')?'warning':'normal'}}
 function cloudButtons(){
- const host=document.querySelector('.top-actions')||document.querySelector('.header-upper')||document.body;
- const wrap=document.createElement('div');
- wrap.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:4px 8px;font-size:12px';
- cloudBadge=document.createElement('span');cloudBadge.setAttribute('role','status');
- cloudBadge.style.cssText='color:#43547a;min-width:180px';
- cloudBadge.textContent='☁ 클라우드 확인 중…';
- const button=(name,handle)=>{
-   const b=document.createElement('button');
-   b.type='button';b.className='btn btn-sm';b.textContent=name;b.addEventListener('click',handle);
-   wrap.append(b);return b
- };
- 
- cloudPullBtn=button('↓ 서버 내용 불러오기',()=>cloudPull(true));
- cloudPushBtn=button('↑ 이 PC 내용 올리기',()=>cloudPush(true));
- wrap.append(cloudBadge);host.append(wrap);
+ const host=document.querySelector('.site-header');
+ const bar=document.createElement('div');bar.className='sync-bar';
+ const wrap=document.createElement('div');wrap.className='sync-inner';
+ cloudBadge=document.createElement('span');cloudBadge.className='sync-status';cloudBadge.setAttribute('role','status');cloudBadge.setAttribute('aria-live','polite');
+ cloudBadge.textContent='☁ 저장 서버에 연결하는 중…';
+ const actions=document.createElement('div');actions.className='sync-actions';
+ const button=(name,handle)=>{const b=document.createElement('button');b.type='button';b.className='btn btn-sm';b.textContent=name;b.addEventListener('click',handle);actions.append(b);return b};
+ cloudPullBtn=button('서버 내용 불러오기',()=>cloudPull(true));
+ cloudPushBtn=button('지금 저장',()=>cloudPush(true));
+ wrap.append(cloudBadge,actions);bar.append(wrap);host.append(bar);
 }
 function cloudApply(data,revision){
  if(!isValid(data))return false;
  cloudApplying=true;
  try{
-  state=deepCopy(data);
-  localStorage.setItem(KEY,JSON.stringify(state));
+  const nextState=deepCopy(data);
+  localStorage.setItem(KEY,JSON.stringify(nextState));
+  state=nextState;
   cloudRev=revision||null;
   if(cloudRev)localStorage.setItem(CLOUD_REV_KEY,cloudRev);else localStorage.removeItem(CLOUD_REV_KEY);
   localStorage.removeItem(CLOUD_PENDING_KEY);cloudDirty=false;
-  active='all';selectedId=null;query='';
-  const search=$('search');if(search)search.value='';
-  render();return true;
+  cloudConflict=false;
+  const listScroll=$('itemlist')?.scrollTop||0,bodyScroll=document.querySelector('.preview-body')?.scrollTop||0;
+  render();$('itemlist').scrollTop=listScroll;const body=document.querySelector('.preview-body');if(body)body.scrollTop=bodyScroll;return true;
  }finally{cloudApplying=false}
 }
 async function cloudPull(force=false){
- if(cloudSaving)return;
+ if(cloudSaving||cloudPulling)return;
+ cloudPulling=true;
  try{
-  const response=await fetch(CLOUD_API+'?t='+Date.now(),{cache:'no-store'});
+  const response=await fetch(CLOUD_API+'?t='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(45000)});
   if(!response.ok)throw Error('서버 응답 '+response.status);
   const data=await response.json();cloudReady=true;cloudHasRemote=!!(data.state&&isValid(data.state));
-  if(cloudDirty&&!force){cloudStatus('⚠ 이 PC 미전송 수정 내용 있음 · 백업 후 동기화');return}
+  if(cloudDirty&&!force){if(!cloudConflict)cloudSchedule();return}
   if(force&&cloudDirty&&!confirm('이 PC에서 저장했지만 클라우드에 반영되지 않은 수정 내용을 서버 내용으로 덮어쓸까요? 먼저 백업 저장을 권장합니다.'))return;
   if(cloudHasRemote){
    const incoming=data.revision||null;
@@ -217,49 +234,53 @@ async function cloudPull(force=false){
    if(cloudRev!==incoming||!localStorage.getItem(CLOUD_REV_KEY)){
      cloudApply(data.state,incoming);
    }
-   cloudStatus('☁ 연결됨 · 다른 PC 수정도 자동 반영');
+   cloudStatus('☁ 저장 완료 · PC와 모바일 동기화됨');
   }else{
    cloudRev=null;
    cloudStatus('☁ 첫 업로드 필요 · ↑ 이 PC 내용 올리기');
   }
- }catch(err){cloudStatus('⚠ 클라우드 접속 실패 · 이 PC에는 계속 저장됨')}
+ }catch(err){cloudStatus('⚠ 서버 연결 대기 · 이 기기에 보관 중 · 자동 재시도')}
+ finally{cloudPulling=false}
 }
 function cloudSchedule(){
  clearTimeout(cloudTimer);
  cloudTimer=setTimeout(()=>cloudPush(false),1000);
 }
 async function cloudPush(explicit=false){
- if(cloudSaving)return;
- if(!cloudReady){cloudStatus('☁ 서버 연결 확인 중');return}
+ if(cloudSaving||cloudPulling)return;
+ if(cloudConflict&&!explicit)return;
+ if(!cloudReady){cloudStatus('☁ 서버 연결 확인 중 · 수정 내용 보관 중');await cloudPull(false);return}
  
  if(!cloudDirty&&!explicit)return;
  if(explicit&&cloudHasRemote&&!confirm('이 PC의 현재 상담 문구와 카테고리로 서버 내용을 갱신하시겠습니까? 다른 PC에도 반영됩니다.'))return;
  cloudSaving=true;cloudStatus('☁ 클라우드에 저장하는 중…');
  const snapshot=JSON.stringify(state),rev=cloudRev;
  try{
-  const response=await fetch(CLOUD_API,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({state:JSON.parse(snapshot),revision:rev})});
+  const response=await fetch(CLOUD_API,{method:'PUT',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(45000),body:JSON.stringify({state:JSON.parse(snapshot),revision:rev})});
   const payload=await response.json().catch(()=>({}));
-  if(response.status===409){cloudStatus('⚠ 다른 PC 수정과 충돌 · 이 PC 백업 후 서버 내용 불러오기');return}
+  if(response.status===409){cloudConflict=true;cloudStatus('⚠ 다른 PC 수정과 충돌 · 이 PC 백업 후 서버 내용 불러오기');return}
   
   if(!response.ok)throw Error(payload.error||'저장 실패');
-  cloudRev=payload.revision;cloudHasRemote=true;
+  cloudRev=payload.revision;cloudHasRemote=true;cloudConflict=false;
   localStorage.setItem(CLOUD_REV_KEY,cloudRev);
   if(JSON.stringify(state)===snapshot){
    cloudDirty=false;localStorage.removeItem(CLOUD_PENDING_KEY);
   }else{cloudDirty=true;localStorage.setItem(CLOUD_PENDING_KEY,'1');}
   cloudStatus('☁ 저장 완료 · 모든 기기 동기화');
- }catch(err){cloudStatus('⚠ 동기화 실패 · 이 PC 내용은 보존됨 ('+err.message+')')}
+ }catch(err){cloudStatus('⚠ 저장 재시도 대기 · 이 기기에 수정 내용 보관 중')}
  finally{cloudSaving=false;if(cloudDirty&&cloudRev!==rev)cloudSchedule()}
 }
 function cloudStart(){
- cloudButtons();
- cloudPull(false);
- setInterval(()=>{
-   if(!cloudSaving&&!cloudDirty&&!modalType)cloudPull(false);
- },7000);
- document.addEventListener('visibilitychange',()=>{
-  if(!document.hidden&&!cloudDirty&&!modalType)cloudPull(false);
- });
+ cloudButtons();cloudPull(false);
+ const resume=()=>{
+  if(cloudSaving||cloudPulling||cloudConflict)return;
+  if(cloudDirty&&cloudReady)cloudPush(false);
+  else if(!modalType||cloudDirty)cloudPull(false);
+ };
+ setInterval(resume,7000);
+ window.addEventListener('online',resume);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)resume()});
+ window.addEventListener('beforeunload',e=>{if(cloudDirty){e.preventDefault();e.returnValue=''}});
 }
 
 function persist(){
@@ -385,7 +406,7 @@ function openEditor(id){
  <div class="attachment-note">커서 위치에 사진이 삽입됩니다. 본문에 보이는 [[img:...]] 표시를 이동하면 이미지 위치도 바뀝니다. 붙여넣기(Ctrl+V)로 이미지 추가도 가능해요.</div>
  <div class="editor-assets" id="editorAssets"></div>
  <div class="attachment-note" style="margin-top:11px;font-weight:800">👀 글 + 이미지 미리보기</div><div class="editor-visual-preview" id="editorVisualPreview"><div class="preview-body" id="editorPreviewBody"></div></div></div>
- <div class="info">사진은 화면에 맞게 자동 압축됩니다. 글·이미지는 현재 브라우저에 저장되며, 기기 변경 전 백업 파일을 보관해 주세요.</div>`;
+ <div class="info">사진은 화면에 맞게 자동 압축됩니다. 저장 완료 후 글과 이미지가 다른 기기에도 반영됩니다.</div>`;
  openModal('edit',item?'상담 문구 수정':'새 상담 문구 추가',item?'글 중간에 이미지를 넣거나 카테고리를 변경할 수 있어요.':'새 문구와 이미지를 추가하세요.',form,foot=>{
   if(item)foot.append(btn('삭제','btn-danger',()=>removeItem(item.id)));else foot.append(btn('취소','',closeModal));
   foot.append(btn('저장하기','btn-primary',()=>{
@@ -414,7 +435,7 @@ function openEditor(id){
  form.addEventListener('submit',e=>e.preventDefault());refreshEditor();
 }
 function removeItem(id){const i=state.items.find(x=>x.id===id);if(!i)return;if(!confirm('"'+i.title+'" 문구를 정말 삭제할까요?'))return;state.items=state.items.filter(x=>x.id!==id);persist();closeModal();render();toast('문구가 삭제되었어요')}
-function openSettings(){const body=document.createElement('div');body.innerHTML='<p class="info" style="margin-top:0">카테고리 순서는 아래 ▲ ▼ 버튼 또는 상단의 ⠿ 손잡이로 변경할 수 있어요. 문구가 들어 있는 카테고리는 삭제할 수 없습니다.</p><div class="settings-list" id="settingList"></div><hr class="divider"><div class="formgroup"><label for="newCatName">새 카테고리 이름</label><div style="display:flex;gap:8px"><input class="field" id="newCatName" maxlength="40" placeholder="예: 상담 후 재연락"><button type="button" class="btn btn-primary" id="newCatBtn">추가</button></div></div><hr class="divider"><h3 style="font-size:14px;margin-bottom:5px">데이터 관리</h3><p class="info">이 홈페이지는 별도 회원가입이나 서버 없이 작동합니다. 수정 내용은 현재 웹브라우저에만 저장되므로 기기 이동·브라우저 초기화 전에 백업해 주세요.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm" id="backupInside">백업 파일 저장</button><button class="btn btn-sm" id="importInside">백업 파일 불러오기</button></div>';
+function openSettings(){const body=document.createElement('div');body.innerHTML='<p class="info" style="margin-top:0">카테고리 순서는 아래 ▲ ▼ 버튼 또는 상단의 ⠿ 손잡이로 변경할 수 있어요. 문구가 들어 있는 카테고리는 삭제할 수 없습니다.</p><div class="settings-list" id="settingList"></div><hr class="divider"><div class="formgroup"><label for="newCatName">새 카테고리 이름</label><div style="display:flex;gap:8px"><input class="field" id="newCatName" maxlength="40" placeholder="예: 상담 후 재연락"><button type="button" class="btn btn-primary" id="newCatBtn">추가</button></div></div><hr class="divider"><h3 style="font-size:14px;margin-bottom:5px">데이터 관리</h3><p class="info">문구·카테고리·이미지는 서버에 저장되어 같은 주소를 여는 모든 기기에서 공유됩니다. 저장 상태는 화면 상단에서 확인하세요. 백업 파일로도 별도 보관할 수 있습니다.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm" id="backupInside">백업 파일 저장</button><button class="btn btn-sm" id="importInside">백업 파일 불러오기</button></div>';
  openModal('settings','카테고리 관리','분류를 추가하거나 변경하세요.',body,ft=>ft.append(btn('닫기','btn-primary',closeModal)));
  const refresh=()=>{const list=$('settingList');if(!list)return;list.replaceChildren();for(const c of state.categories){const row=document.createElement('div');row.className='setting-row';const left=document.createElement('div');left.className='setting-name';left.innerHTML=`<span class="color-dot" style="background:${/^(#[a-f\d]{3,8})$/i.test(c.color)?c.color:'#8796bc'}"></span>`;const name=document.createElement('div');const strong=document.createElement('strong');strong.textContent=c.name;const count=document.createElement('small');count.textContent=' · '+state.items.filter(i=>i.categoryId===c.id).length+'개 문구';name.append(strong,count);left.append(name);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='6px';actions.append(btn('▲','btn-sm',()=>{shiftCategory(c.id,-1);refresh()}),btn('▼','btn-sm',()=>{shiftCategory(c.id,1);refresh()}),btn('이름 변경','btn-sm',()=>{const next=prompt('카테고리 이름을 입력해 주세요.',c.name);if(next===null)return;const trimmed=next.trim();if(!trimmed){toast('카테고리 이름을 입력하세요');return}if(state.categories.some(z=>z.id!==c.id&&z.name===trimmed)){toast('이미 사용 중인 이름이에요');return}c.name=trimmed;persist();render();refresh()}),btn('삭제','btn-sm btn-danger',()=>{if(state.items.some(i=>i.categoryId===c.id)){alert('이 카테고리에 문구가 있어요. 문구를 다른 카테고리로 이동한 뒤 삭제해 주세요.');return}if(state.categories.length<=1){toast('카테고리가 하나는 있어야 해요');return}if(!confirm('"'+c.name+'" 카테고리를 삭제할까요?'))return;state.categories=state.categories.filter(x=>x.id!==c.id);persist();render();refresh()}));row.append(left,actions);list.append(row)}};
  refresh();$('newCatBtn').onclick=()=>{const name=$('newCatName').value.trim();if(!name){toast('카테고리 이름을 입력하세요');return}if(state.categories.some(c=>c.name===name)){toast('이미 존재하는 카테고리예요');return}state.categories.push({id:uid(),name,icon:'folder',color:'#6885e9',description:name+'에 사용할 문구를 정리하세요.'});$('newCatName').value='';persist();render();refresh();toast('새 카테고리를 만들었어요 ✓')};$('newCatName').onkeydown=e=>{if(e.key==='Enter'){$('newCatBtn').click();e.preventDefault()}};$('backupInside').onclick=downloadBackup;$('importInside').onclick=()=>{closeModal();$('importFile').click()}}
