@@ -237,7 +237,7 @@ async function cloudPull(force=false){
    cloudStatus('☁ 저장 완료 · PC와 모바일 동기화됨');
   }else{
    cloudRev=null;
-   cloudStatus('☁ 첫 업로드 필요 · ↑ 이 PC 내용 올리기');
+   cloudStatus('☁ 첫 업로드 필요 · 지금 저장을 눌러 주세요');
   }
  }catch(err){cloudStatus('⚠ 서버 연결 대기 · 이 기기에 보관 중 · 자동 재시도')}
  finally{cloudPulling=false}
@@ -266,7 +266,7 @@ async function cloudPush(explicit=false){
   if(JSON.stringify(state)===snapshot){
    cloudDirty=false;localStorage.removeItem(CLOUD_PENDING_KEY);
   }else{cloudDirty=true;localStorage.setItem(CLOUD_PENDING_KEY,'1');}
-  cloudStatus('☁ 저장 완료 · 모든 기기 동기화');
+  cloudStatus(cloudDirty?'☁ 추가 수정 내용 저장 대기 중…':'☁ 저장 완료 · 모든 기기 동기화');
  }catch(err){cloudStatus('⚠ 저장 재시도 대기 · 이 기기에 수정 내용 보관 중')}
  finally{cloudSaving=false;if(cloudDirty&&cloudRev!==rev)cloudSchedule()}
 }
